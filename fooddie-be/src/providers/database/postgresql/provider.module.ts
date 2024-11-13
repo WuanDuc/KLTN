@@ -22,9 +22,9 @@ import { DataSource } from 'typeorm';
         database: configService.get<string>('DATABASE'),
         entities: [],
         synchronize: true,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
         //logging: true,
         autoLoadEntities: true,
       }),
