@@ -17,4 +17,6 @@ export class Address {
   
     @Column({ nullable: true })
     ZipCode: string;
+
+    
 }
