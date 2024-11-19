@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { Address } from 'src/models/address/entities/address.entity';
 @Entity('User')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -24,7 +24,9 @@ export class User {
   @Column({ nullable: false, type: 'date' }) // specify type for float values
   CreateDate: Date;
   
-  @Column()
-  AddressID: string;
+  // @Column()
+  // AddressID: string;
 
+  @OneToOne(() => Address, (address) => address.id, { eager: true })
+  Address: Address;
 }

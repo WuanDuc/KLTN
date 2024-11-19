@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';   
-
+import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, JoinTable} from 'typeorm';   
+import { User } from '../../user/entities/user.entity';
 @Entity('Address')
 export class Address {
     @PrimaryGeneratedColumn('uuid')
@@ -18,5 +18,9 @@ export class Address {
     @Column({ nullable: true })
     ZipCode: string;
 
+    @OneToOne(() => User, (user) => user.Address, { cascade : true })
+    @JoinColumn()
+    user: User;
+    
     
 }
